@@ -1,0 +1,30 @@
+---
+title: "summary tables"
+author: "Rayna"
+date: "7/30/2020"
+output: html_document
+---
+
+<style>
+
+table, td, th {
+  border: none;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+</style>
+
+
+```{r, results = "asis"}
+
+stargazer(data_for_summary,
+          digits = 2,
+          #column.sep.width = "10pt",
+          type = "html")
+
+```

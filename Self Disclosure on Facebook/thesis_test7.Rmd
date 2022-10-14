@@ -1,0 +1,27 @@
+---
+title: "Thesis_tables"
+author: "Rayna"
+date: "6/9/2020"
+output: html_document
+---
+```{r}
+library(foreign)
+data1<- read.spss("Marina - Dataset2017 compleet FINAL min outliers.sav", to.data.frame=TRUE)
+library(Hmisc)
+```
+
+```{r}
+library(stargazer)
+#-------------------------Age12-13 df---------------------
+A12_13 <- subset(data1, agegroups == 1)
+Age12_13 = data.frame(apply(A12_13, 2, function(x) as.numeric(as.character(x))))
+blk1 <- lm(SelfDisclosure ~ gender1 + timespentonFB023, data = Age12_13)
+summary(blk1)
+blk2 <- lm(SelfDisclosure ~ gender1 + timespentonFB023 + ImaginaryAudience, data = Age12_13)
+summary(blk2)
+```
+Here is the latex table in a PDF document:
+
+```{r  mylatextable, results = "asis"}
+stargazer(blk1, blk2)
+```
